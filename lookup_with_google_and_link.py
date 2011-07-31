@@ -1,4 +1,6 @@
 import sublime, sublime_plugin
+import re, urllib, urllib2
+import chardet
 
 def clamp(xmin, x, xmax):
     if x < xmin:
@@ -52,5 +54,21 @@ class LookupWithGoogleAndLink(sublime_plugin.TextCommand):
 		for s in new_sels:
 			self.view.sel().add(sublime.Region(clamp(0, s.a, sz),
 				clamp(0, s.b, sz)))
-
+		
 		# apply the links
+		for s in reversed(self.view.sel()):
+			if not s.empty():
+				txt = self.view.substr(s)
+				try:
+					url = "http://www.google.com/search?%s&btnI=I'm+Feeling+Lucky" % urllib.urlencode({'q': txt})
+					req = urllib2.Request(url, headers={'User-Agent' : "Sublime Text 2 Hyperlink Helper"}) 
+					f = urllib2.urlopen(req)
+					url = f.geturl()
+					content = f.read()
+					decoded_content = content.decode(chardet.detect(content)['encoding'])
+					title = re.search(r"<title>([^<>]*)</title>", decoded_content, re.I).group(1)
+					title = title.strip()
+					self.view.replace(edit, s, u'<a href="%s" title="%s">%s</a>' % (url, title, txt))
+				except urllib2.HTTPError, e:
+					sublime.error_message("Error fetching Google search result: %s" % str(e))
+					pass
