@@ -1,3 +1,0 @@
-[submodule "pystache"]
-	path = pystache
-	url = git://github.com/defunkt/pystache.git
