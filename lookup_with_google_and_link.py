@@ -74,7 +74,9 @@ class LookupWithGoogleAndLink(sublime_plugin.TextCommand):
 		for s in reversed(self.view.sel()):
 			if not s.empty():
 				txt = self.view.substr(s)
+				self.view.set_status("hyperlinkhelper", u"Fetching link for '%s'\u2026" % txt)
 				link = self.get_link_with_title(txt)
+				self.view.erase_status("hyperlinkhelper")
 				if not link:
 					continue
 				self.view.replace(edit, s, u'<a href="%s" title="%s">%s</a>' % link)
