@@ -19,7 +19,7 @@ def classify(char, charsets):
             return i
     return -1
 
-class LookupWithGoogleAndLink(sublime_plugin.TextCommand):
+class LookupWithGoogleAndLinkCommand(sublime_plugin.TextCommand):
 
 	def expand_to_word(self, view, pos):
 		line = view.line(pos)
