@@ -1,7 +1,7 @@
 ST2 Hyperlink Helper
 ====================
 
-a port of [TextMate’s][textmate] Hyperlink Helper bundle for [Sublime Text 2][st2]
+a port of [TextMate’s][tm] Hyperlink Helper bundle for [Sublime Text 2][st2]
 
 What is this?
 -------------
@@ -36,4 +36,4 @@ Project Status
 This project is currently alpha. Functionality is largely incomplete, but what’s there works to a useful standard.
 
 [st2]: http://www.sublimetext.com/2
-[textmate]: http://macromates.com/
+[tm]: http://macromates.com/
