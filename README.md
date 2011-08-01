@@ -18,7 +18,7 @@ Currently supported languages:
 
 Currently offered commands:
 
-  * Lookup with Google & Link
+  * Lookup with Google & Link (Ctrl+Alt+Shift+L, ^⇧⌘L on Mac)
 
 At this time, there are no menus or key bindings assigned to these commands (there will be soon). You can invoke the commands from the Command Palette (Tools > Command Palette), or assign your own menu items or keyboard shortcuts in your User Key Bindings file.
 
