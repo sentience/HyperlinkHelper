@@ -80,9 +80,7 @@ class LookupWithGoogleAndLinkCommand(sublime_plugin.TextCommand):
 		for s in reversed(self.view.sel()):
 			if not s.empty():
 				txt = self.view.substr(s)
-				self.view.set_status("hyperlinkhelper", u"Fetching link for '%s'\u2026" % txt)
 				link = self.get_link_with_title(txt)
-				self.view.erase_status("hyperlinkhelper")
 				if not link:
 					continue
 				self.view.replace(edit, s, pystache.render(self.view.settings().get('hyperlink_helper_link_format'), {'url': link[0], 'title?': {'title': link[1]}, 'input': link[2]}))
