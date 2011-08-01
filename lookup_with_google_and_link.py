@@ -8,22 +8,6 @@ sys.path.append(os.path.join(cmd_folder, 'pystache'))
 
 import chardet, pystache
 
-def clamp(xmin, x, xmax):
-    if x < xmin:
-        return xmin
-    if x > xmax:
-        return xmax
-    return x;
-
-def classify(char, charsets):
-    if len(char) == 0:
-        return -2
-
-    for i in xrange(0, len(charsets)):
-        if char in charsets[i]:
-            return i
-    return -1
-
 class LookupWithGoogleAndLinkCommand(sublime_plugin.TextCommand):
 
 	def get_link_with_title(self, phrase):
