@@ -26,25 +26,6 @@ def classify(char, charsets):
 
 class LookupWithGoogleAndLinkCommand(sublime_plugin.TextCommand):
 
-	def expand_to_word(self, view, pos):
-		line = view.line(pos)
-
-		classes = [" \t", view.settings().get("word_separators"), "\n"]
-		# 1) look for first non-word character before pos in the line
-		while pos > line.a and classify(view.substr(sublime.Region(pos, pos - 1)), classes) == -1:
-			pos -= 1
-
-		# 2) if it's followed by one or more word characters,
-		#    return a selection containing them
-		if classify(view.substr(sublime.Region(pos, pos + 1)), classes) == -1:
-			pos2 = pos + 1
-			while classify(view.substr(sublime.Region(pos2, pos2 + 1)), classes) == -1:
-				pos2 += 1
-			return sublime.Region(pos, pos2)
-
-		# 3) if not, return empty selection
-		return sublime.Region(pos, pos)
-	
 	def get_link_with_title(self, phrase):
 		try:
 			url = "http://www.google.com/search?%s&btnI=I'm+Feeling+Lucky" % urllib.urlencode({'q': phrase})
@@ -61,20 +42,20 @@ class LookupWithGoogleAndLinkCommand(sublime_plugin.TextCommand):
 			return None
 
 	def run(self, edit):
-		new_sels = []
+		nonempty_sels = []
 
-		# expand each selected region that is empty to encompass
-		# the nearest word
+		# set aside nonempty selections
 		for s in reversed(self.view.sel()):
-			if s.empty():
-				new_sels.append(self.expand_to_word(self.view, s.b))
-		
-		# add the new selections to the document (clamped to
-		# document limits - TODO: is this needed?)
-		sz = self.view.size()
-		for s in new_sels:
-			self.view.sel().add(sublime.Region(clamp(0, s.a, sz),
-				clamp(0, s.b, sz)))
+			if not s.empty():
+				nonempty_sels.append(s)
+				self.view.sel().subtract(s)
+
+		# expand remaining (empty) selections to words
+		self.view.run_command("expand_selection", {"to": "word"})
+
+		# add nonempty selections back in
+		for s in nonempty_sels:
+			self.view.sel().add(s)
 		
 		# apply the links
 		for s in reversed(self.view.sel()):
