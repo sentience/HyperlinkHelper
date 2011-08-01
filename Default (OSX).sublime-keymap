@@ -1,0 +1,3 @@
+[
+	{ "keys": ["ctrl+shift+super+l"], "command": "lookup_with_google_and_link"}
+]
