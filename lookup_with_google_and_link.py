@@ -1,7 +1,12 @@
 import sublime, sublime_plugin
 import re, urllib, urllib2
-import chardet
-import pystache
+import os, sys
+
+cmd_folder = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(cmd_folder, 'chardet'))
+sys.path.append(os.path.join(cmd_folder, 'pystache'))
+
+import chardet, pystache
 
 def clamp(xmin, x, xmax):
     if x < xmin:
@@ -51,7 +56,7 @@ class LookupWithGoogleAndLinkCommand(sublime_plugin.TextCommand):
 			title = re.search(r"<title>([^<>]*)</title>", decoded_content, re.I).group(1)
 			title = title.strip()
 			return url, title, phrase
-		except urllib2.HTTPError, e:
+		except urllib2.URLError, e:
 			sublime.error_message("Error fetching Google search result: %s" % str(e))
 			return None
 
@@ -75,9 +80,7 @@ class LookupWithGoogleAndLinkCommand(sublime_plugin.TextCommand):
 		for s in reversed(self.view.sel()):
 			if not s.empty():
 				txt = self.view.substr(s)
-				self.view.set_status("hyperlinkhelper", u"Fetching link for '%s'\u2026" % txt)
 				link = self.get_link_with_title(txt)
-				self.view.erase_status("hyperlinkhelper")
 				if not link:
 					continue
-				self.view.replace(edit, s, pystache.render(self.view.settings().get('hyperlink_helper_link_format'), {'url': link[0], 'title': link[1], 'input': link[2]}))
+				self.view.replace(edit, s, pystache.render(self.view.settings().get('hyperlink_helper_link_format'), {'url': link[0], 'title?': {'title': link[1]}, 'input': link[2]}))
