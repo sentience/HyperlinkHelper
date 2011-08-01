@@ -1,7 +1,6 @@
 import sublime, sublime_plugin
 import re, urllib, urllib2
-import chardet
-import pystache
+import chardet, pystache
 
 def clamp(xmin, x, xmax):
     if x < xmin:
@@ -80,4 +79,4 @@ class LookupWithGoogleAndLinkCommand(sublime_plugin.TextCommand):
 				self.view.erase_status("hyperlinkhelper")
 				if not link:
 					continue
-				self.view.replace(edit, s, pystache.render(self.view.settings().get('hyperlink_helper_link_format'), {'url': link[0], 'title': link[1], 'input': link[2]}))
+				self.view.replace(edit, s, pystache.render(self.view.settings().get('hyperlink_helper_link_format'), {'url': link[0], 'title?': {'title': link[1]}, 'input': link[2]}))
