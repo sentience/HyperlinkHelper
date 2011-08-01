@@ -1,5 +1,11 @@
 import sublime, sublime_plugin
 import re, urllib, urllib2
+import os, sys
+
+cmd_folder = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(cmd_folder, 'chardet'))
+sys.path.append(os.path.join(cmd_folder, 'pystache'))
+
 import chardet, pystache
 
 def clamp(xmin, x, xmax):
