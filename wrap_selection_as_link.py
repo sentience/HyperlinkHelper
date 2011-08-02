@@ -33,7 +33,7 @@ class WrapSelectionAsLinkCommand(sublime_plugin.TextCommand):
 			# convert Amazon links (possibly containing affiliate codes) to canonical URLs
 			match = re.match(r"^https?://www.(amazon.(?:com|co.uk|co.jp|ca|fr|de))/.+?/([A-Z0-9]{10})/[-a-zA-Z0-9_./%?=&]+$", text)
 			if match: 
-				return "http://%s/dp/%s" % (match.group(1), match.group(3))
+				return "http://%s/dp/%s" % (match.group(1), match.group(2))
 			else:
 				# pass through other URLs untouched
 				match = re.match(r"^[a-zA-Z][a-zA-Z0-9.+-]*://.*$", text)
@@ -71,14 +71,19 @@ class WrapSelectionAsLinkCommand(sublime_plugin.TextCommand):
 		txt = sublime.get_clipboard().strip()
 		url = self.make_url(txt)
 
+		title = None
 		if re.match(r"^https?://", url) and url != "http://example.com/":
-			title = self.get_url_title(url)
+			title = { 'title': self.get_url_title(url) }
 
 		# apply the links
-		for s in reversed(self.view.sel()):
+		old_sels = []
+		for s in (self.view.sel()):
+			old_sels.append(s)
+		self.view.sel().clear()
+		for s in reversed(old_sels):
 			if not s.empty():
 				txt = self.view.substr(s)
-				link = self.get_link_with_title(txt)
-				if not link:
-					continue
-				self.view.replace(edit, s, pystache.render(self.view.settings().get('hyperlink_helper_link_format'), {'url': link[0], 'title?': {'title': link[1]}, 'input': link[2]}))
+				link = pystache.render(self.view.settings().get('hyperlink_helper_link_format'), {'url': url, 'title?': title, 'input': txt})
+				self.view.replace(edit, s, link)
+				pos = s.begin() + len(link)
+				self.view.sel().add(sublime.Region(pos, pos))
