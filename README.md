@@ -19,6 +19,7 @@ Currently supported languages:
 Currently offered commands:
 
   * Lookup with Google & Link (Ctrl+Alt+Shift+L, ^⇧⌘L on Mac)
+  * Wrap Word / Selection as Link (Ctrl+Alt+L, ^⇧L on Mac)
 
 Why is this needed?
 -------------------
