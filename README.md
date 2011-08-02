@@ -6,7 +6,7 @@ a port of [TextMate’s][tm] Hyperlink Helper bundle for [Sublime Text 2][st2]
 What is this?
 -------------
 
-ST2 Hyperlink Helper is a collection of commands for the [Sublime Text 2][st2] text editor for Windows, OS X, and Linux. These commands make it super easy to insert hyperlinks into documents of various kinds (including HTML, Markdown) using shortcut.
+ST2 Hyperlink Helper is a collection of commands for the [Sublime Text 2][st2] text editor for Windows, OS X, and Linux. These commands make it super easy to insert hyperlinks into documents of various kinds using keyboard shortcuts.
 
 Currently supported languages:
 
