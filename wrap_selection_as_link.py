@@ -1,12 +1,12 @@
 import sublime, sublime_plugin
 import re, urllib, urllib2
 import os, sys
-
-cmd_folder = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(cmd_folder, 'chardet'))
-sys.path.append(os.path.join(cmd_folder, 'pystache'))
-
 import chardet, pystache
+
+def preemptive_imports():
+	""" needed to ensure ability to import these classes later within functions, due to the way ST2 loads plug-in modules """
+	from chardet import universaldetector
+preemptive_imports()
 
 class WrapSelectionAsLinkCommand(sublime_plugin.TextCommand):
 
