@@ -21,6 +21,8 @@ Currently offered commands:
   * Lookup with Google & Link (Ctrl+Alt+Shift+L, ^⇧⌘L on Mac)
   * Wrap Word / Selection as Link (Ctrl+Alt+L, ^⇧L on Mac)
 
+**Note:** You can also access these commands from the Command Palette (Ctrl+Shift+P, ⇧⌘P on Mac), which saves you having to remember the keyboard shortcuts.
+
 Why is this needed?
 -------------------
 
