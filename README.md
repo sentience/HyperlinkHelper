@@ -11,6 +11,7 @@ ST2 Hyperlink Helper is a collection of commands for the [Sublime Text 2][st2] t
 Currently supported languages:
 
   * HTML
+    * HTML in PHP
   * Markdown
   * Textile
   * LaTeX
