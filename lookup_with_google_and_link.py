@@ -1,6 +1,5 @@
 import sublime, sublime_plugin
 import re, urllib, urllib2
-import os, sys
 import chardet, pystache
 
 def preemptive_imports():
