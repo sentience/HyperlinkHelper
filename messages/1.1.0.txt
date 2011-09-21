@@ -1,0 +1,3 @@
+Hyperlink Helper upgraded to v1.1.0!
+
+Lookup with Wikipedia & Link command added. It has no keyboard shortcut by default, but you can find it in Tools > Command Palette.

@@ -1,0 +1,3 @@
+Hyperlink Helper v1.1.0 installed!
+
+To view the list of commands added by this package (and their keyboard shortcuts), open Tools > Command Palette and type “Hyperlink Helper”.
