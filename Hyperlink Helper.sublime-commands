@@ -1,4 +1,4 @@
 [
 	{ "caption": "Hyperlink Helper: Lookup with Google & Link", "command": "lookup_with_google_and_link"},
-	{ "caption": "Hyperlink Helper: Wrap Word / Selection as Link", "command": "lookup_with_google_and_link"}
+	{ "caption": "Hyperlink Helper: Wrap Word / Selection as Link", "command": "wrap_selection_as_link"}
 ]
