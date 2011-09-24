@@ -7,7 +7,7 @@ def preemptive_imports():
 	from chardet import universaldetector
 preemptive_imports()
 
-class LookupWithWikipediaAndLinkCommand(sublime_plugin.TextCommand):
+class LinkToWikipediaPageForSelectionCommand(sublime_plugin.TextCommand):
 
 	def get_link_with_title(self, phrase):
 		try:

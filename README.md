@@ -19,7 +19,7 @@ Currently supported languages:
 
 Currently offered commands:
 
-  * Lookup with Wikipedia & Link
+  * Link to Wikipedia Page for Selection
   * Lookup with Google & Link (Ctrl+Alt+Shift+L, ^⇧⌘L on Mac)
   * Wrap Word / Selection as Link (Ctrl+Alt+L, ^⇧L on Mac)
 

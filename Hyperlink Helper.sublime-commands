@@ -1,5 +1,5 @@
 [
-	{ "caption": "Hyperlink Helper: Lookup with Wikipedia & Link", "command": "lookup_with_wikipedia_and_link"},
+	{ "caption": "Hyperlink Helper: Link to Wikipedia Page for Selection", "command": "link_to_wikipedia_page_for_selection"},
 	{ "caption": "Hyperlink Helper: Lookup with Google & Link", "command": "lookup_with_google_and_link"},
 	{ "caption": "Hyperlink Helper: Wrap Word / Selection as Link", "command": "wrap_selection_as_link"}
 ]
