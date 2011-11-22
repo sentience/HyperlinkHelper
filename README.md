@@ -38,7 +38,7 @@ Download the code for this project and drop it into a subdirectory of Sublime Te
 Project Status
 --------------
 
-This project is currently alpha. Functionality is largely incomplete, but what’s there works to a useful standard.
+This project is **stable**, but is an incomplete port. The available functionality works and works well, but there are features of the original TextMate bundle that still need to be brought over.
 
 [st2]: http://www.sublimetext.com/2
 [tm]: http://macromates.com/
