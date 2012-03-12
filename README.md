@@ -12,6 +12,8 @@ Currently supported languages:
 
   * HTML
     * HTML in PHP
+    * HTML (Rails)
+    * HTML5
   * Markdown
   * Textile
   * LaTeX
