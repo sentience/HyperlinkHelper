@@ -1,0 +1,3 @@
+Hyperlink Helper upgraded to v1.3.0!
+
+Added support for HTML (Django) syntaxes. [Thanks to pageworthy!]

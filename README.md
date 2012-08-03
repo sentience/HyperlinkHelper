@@ -12,6 +12,7 @@ Currently supported languages:
 
   * HTML
     * HTML in PHP
+    * HTML (Django)
     * HTML (Rails)
     * HTML5
   * Markdown
