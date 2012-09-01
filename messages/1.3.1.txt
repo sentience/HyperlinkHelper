@@ -1,0 +1,3 @@
+Hyperlink Helper upgraded to v1.3.1!
+
+Fixes an encoding issue preventing install/upgrade messages from being displayed.

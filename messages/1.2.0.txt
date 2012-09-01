@@ -1,5 +1,5 @@
 Hyperlink Helper upgraded to v1.2.0!
 
-Renamed “Lookup with Wikipedia & Link” command to “Link to Wikipedia Page for Selection”.
+Renamed "Lookup with Wikipedia & Link" command to "Link to Wikipedia Page for Selection".
 
 Added support for HTML5 and HTML (Rails) syntaxes. [Thanks to nedbaldessin!]
