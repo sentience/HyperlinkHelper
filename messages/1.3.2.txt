@@ -1,0 +1,3 @@
+Hyperlink Helper upgraded to v1.3.2!
+
+Correctly supports files using the HTML5 package also available through Package Control.
