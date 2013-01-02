@@ -36,12 +36,17 @@ Hyperlink Helper is one of the most popular features of [TextMate][tm] a popular
 How do I install this?
 ----------------------
 
+The easiest way to install is to use [Package Control][pc].
+
 Download the code for this project and drop it into a subdirectory of Sublime Text 2’s Packages folder. You can get to the Packages folder by choosing **Browse Packages…** from Sublime Text 2’s **Preferences** menu.
+
+**Restart Sublime Text** if it is running to ensure the hyperlink templates are loaded.
 
 Project Status
 --------------
 
 This project is **stable**, but is an incomplete port. The available functionality works and works well, but there are features of the original TextMate bundle that still need to be brought over.
 
+[pc]: http://wbond.net/sublime_packages/package_control
 [st2]: http://www.sublimetext.com/2
 [tm]: http://macromates.com/

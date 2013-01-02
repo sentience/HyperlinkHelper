@@ -1,0 +1,3 @@
+Hyperlink Helper upgraded to v1.3.3!
+
+Package Control installation message now points out that restarting Sublime Text may be required for Hyperlink Helper to work.
