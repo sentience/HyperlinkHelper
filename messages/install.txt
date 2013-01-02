@@ -1,3 +1,5 @@
-Hyperlink Helper v1.3.2 installed!
+Hyperlink Helper v1.3.3 installed!
 
 To view the list of commands added by this package (and their keyboard shortcuts), open Tools > Command Palette and type "Hyperlink Helper".
+
+IMPORTANT: If Hyperlink Helper doesn't work after you install it, try restarting Sublime Text. This is required to load the hyperlink templates for all supported language syntaxes.
