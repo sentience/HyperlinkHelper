@@ -67,5 +67,4 @@ class LinkToWikipediaPageForSelectionCommand(sublime_plugin.TextCommand):
 				link = self.get_link_with_title(txt)
 				if not link:
 					continue
-				print(self.view.settings().get('hyperlink_helper_link_format'))
 				self.view.replace(edit, s, pystache.render(self.view.settings().get('hyperlink_helper_link_format'), {'url': link[0], 'title?': {'title': link[1]}, 'input': link[2]}))
