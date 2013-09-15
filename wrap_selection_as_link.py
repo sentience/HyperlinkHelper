@@ -20,7 +20,7 @@ class WrapSelectionAsLinkCommand(sublime_plugin.TextCommand):
 			title = re.search(r"<title>([^<>]*)</title>", decoded_content, re.I).group(1)
 			title = title.strip()
 			return title
-		except Exception, e:
+		except Exception as e:
 			sublime.error_message("Error fetching page title: %s" % str(e))
 			return None
 

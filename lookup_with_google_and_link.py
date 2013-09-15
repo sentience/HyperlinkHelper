@@ -20,7 +20,7 @@ class LookupWithGoogleAndLinkCommand(sublime_plugin.TextCommand):
 			title = re.search(r"<title>([^<>]*)</title>", decoded_content, re.I).group(1)
 			title = title.strip()
 			return url, title, phrase
-		except urllib2.URLError, e:
+		except URLError as e:
 			sublime.error_message("Error fetching Google search result: %s" % str(e))
 			return None
 
