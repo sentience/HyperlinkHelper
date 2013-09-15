@@ -1,0 +1,3 @@
+Hyperlink Helper upgraded to v1.4.0!
+
+Hyperlink Helper is now compatible with Sublime Text 3.
