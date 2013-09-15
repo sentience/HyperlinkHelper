@@ -10,7 +10,7 @@ import chardet
 
 try:
 	# Python 3 (ST3)
-	from python3 import pystache
+	import pystache
 	from urllib.request import Request, urlopen
 	from urllib.error import URLError
 	from urllib.parse import urlencode
