@@ -1,7 +1,19 @@
 import sublime, sublime_plugin
-import re, urllib, urllib2
-import os, sys
+import os, sys, re
+
+# import modules in current directory
+dist_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, dist_dir)
+
+# Python 2/3 compatible
 import chardet, pystache
+
+try:
+	# Python 3 (ST3)
+	from urllib.request import Request, urlopen
+except ImportError:
+	# Python 2 (ST2)
+	from urllib2 import Request, urlopen
 
 def preemptive_imports():
 	""" needed to ensure ability to import these classes later within functions, due to the way ST2 loads plug-in modules """
@@ -12,15 +24,15 @@ class WrapSelectionAsLinkCommand(sublime_plugin.TextCommand):
 
 	def get_url_title(self, url):
 		try:
-			req = urllib2.Request(url, headers={'User-Agent' : "Sublime Text 2 Hyperlink Helper"}) 
-			f = urllib2.urlopen(req)
+			req = Request(url, headers={'User-Agent' : "Sublime Text 2 Hyperlink Helper"}) 
+			f = urlopen(req)
 			url = f.geturl()
 			content = f.read()
 			decoded_content = content.decode(chardet.detect(content)['encoding'])
 			title = re.search(r"<title>([^<>]*)</title>", decoded_content, re.I).group(1)
 			title = title.strip()
 			return title
-		except Exception, e:
+		except Exception as e:
 			sublime.error_message("Error fetching page title: %s" % str(e))
 			return None
 
