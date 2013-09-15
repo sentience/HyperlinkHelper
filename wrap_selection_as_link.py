@@ -1,15 +1,19 @@
 import sublime, sublime_plugin
-import re
-import os, sys
+import os, sys, re
+
+# import modules in current directory
+dist_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, dist_dir)
+
+# Python 2/3 compatible
+import chardet
 
 try:
 	# Python 3 (ST3)
-	from HyperlinkHelper import chardet
-	from HyperlinkHelper import pystache # WHY ISN'T THIS WORKING?!
+	from python3 import pystache
 	from urllib.request import Request, urlopen
 except ImportError:
 	# Python 2 (ST2)
-	import chardet
 	from python2 import pystache
 	from urllib2 import Request, urlopen
 
