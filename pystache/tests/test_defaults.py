@@ -31,37 +31,37 @@ class DefaultsConfigurableTestCase(unittest.TestCase, AssertStringMixin):
             self.saved[e] = getattr(pystache.defaults, e)
 
     def tearDown(self):
-        for key, value in list(self.saved.items()):
+        for key, value in self.saved.items():
             setattr(pystache.defaults, key, value)
 
     def test_tag_escape(self):
         """Test that changes to defaults.TAG_ESCAPE take effect."""
-        template = "{{foo}}"
+        template = u"{{foo}}"
         context = {'foo': '<'}
         actual = pystache.render(template, context)
-        self.assertString(actual, "&lt;")
+        self.assertString(actual, u"&lt;")
 
         pystache.defaults.TAG_ESCAPE = lambda u: u
         actual = pystache.render(template, context)
-        self.assertString(actual, "<")
+        self.assertString(actual, u"<")
 
     def test_delimiters(self):
         """Test that changes to defaults.DELIMITERS take effect."""
-        template = "[[foo]]{{foo}}"
+        template = u"[[foo]]{{foo}}"
         context = {'foo': 'FOO'}
         actual = pystache.render(template, context)
-        self.assertString(actual, "[[foo]]FOO")
+        self.assertString(actual, u"[[foo]]FOO")
 
         pystache.defaults.DELIMITERS = ('[[', ']]')
         actual = pystache.render(template, context)
-        self.assertString(actual, "FOO{{foo}}")
+        self.assertString(actual, u"FOO{{foo}}")
 
     def test_missing_tags(self):
         """Test that changes to defaults.MISSING_TAGS take effect."""
-        template = "{{foo}}"
+        template = u"{{foo}}"
         context = {}
         actual = pystache.render(template, context)
-        self.assertString(actual, "")
+        self.assertString(actual, u"")
 
         pystache.defaults.MISSING_TAGS = 'strict'
         self.assertRaises(pystache.context.KeyNotFoundError,

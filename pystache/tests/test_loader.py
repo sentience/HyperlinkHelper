@@ -55,23 +55,23 @@ class LoaderTests(unittest.TestCase, AssertStringMixin, SetupDefaults):
 
     def test_init__to_unicode__default(self):
         loader = Loader()
-        self.assertRaises(TypeError, loader.to_unicode, "abc")
+        self.assertRaises(TypeError, loader.to_unicode, u"abc")
 
         decode_errors = defaults.DECODE_ERRORS
         string_encoding = defaults.STRING_ENCODING
 
-        nonascii = 'abcdé'.encode('utf-8')
+        nonascii = u'abcdé'.encode('utf-8')
 
         loader = Loader()
         self.assertRaises(UnicodeDecodeError, loader.to_unicode, nonascii)
 
         defaults.DECODE_ERRORS = 'ignore'
         loader = Loader()
-        self.assertString(loader.to_unicode(nonascii), 'abcd')
+        self.assertString(loader.to_unicode(nonascii), u'abcd')
 
         defaults.STRING_ENCODING = 'utf-8'
         loader = Loader()
-        self.assertString(loader.to_unicode(nonascii), 'abcdé')
+        self.assertString(loader.to_unicode(nonascii), u'abcdé')
 
 
     def _get_path(self, filename):
@@ -83,9 +83,9 @@ class LoaderTests(unittest.TestCase, AssertStringMixin, SetupDefaults):
 
         """
         loader = Loader()
-        actual = loader.str("foo")
+        actual = loader.unicode("foo")
 
-        self.assertString(actual, "foo")
+        self.assertString(actual, u"foo")
 
     def test_unicode__basic__input_unicode(self):
         """
@@ -93,24 +93,24 @@ class LoaderTests(unittest.TestCase, AssertStringMixin, SetupDefaults):
 
         """
         loader = Loader()
-        actual = loader.str("foo")
+        actual = loader.unicode(u"foo")
 
-        self.assertString(actual, "foo")
+        self.assertString(actual, u"foo")
 
     def test_unicode__basic__input_unicode_subclass(self):
         """
         Test unicode(): default arguments with unicode-subclass input.
 
         """
-        class UnicodeSubclass(str):
+        class UnicodeSubclass(unicode):
             pass
 
-        s = UnicodeSubclass("foo")
+        s = UnicodeSubclass(u"foo")
 
         loader = Loader()
-        actual = loader.str(s)
+        actual = loader.unicode(s)
 
-        self.assertString(actual, "foo")
+        self.assertString(actual, u"foo")
 
     def test_unicode__to_unicode__attribute(self):
         """
@@ -119,16 +119,16 @@ class LoaderTests(unittest.TestCase, AssertStringMixin, SetupDefaults):
         """
         loader = Loader()
 
-        non_ascii = 'abcdé'.encode('utf-8')
-        self.assertRaises(UnicodeDecodeError, loader.str, non_ascii)
+        non_ascii = u'abcdé'.encode('utf-8')
+        self.assertRaises(UnicodeDecodeError, loader.unicode, non_ascii)
 
         def to_unicode(s, encoding=None):
             if encoding is None:
                 encoding = 'utf-8'
-            return str(s, encoding)
+            return unicode(s, encoding)
 
         loader.to_unicode = to_unicode
-        self.assertString(loader.str(non_ascii), "abcdé")
+        self.assertString(loader.unicode(non_ascii), u"abcdé")
 
     def test_unicode__encoding_argument(self):
         """
@@ -137,12 +137,12 @@ class LoaderTests(unittest.TestCase, AssertStringMixin, SetupDefaults):
         """
         loader = Loader()
 
-        non_ascii = 'abcdé'.encode('utf-8')
+        non_ascii = u'abcdé'.encode('utf-8')
 
-        self.assertRaises(UnicodeDecodeError, loader.str, non_ascii)
+        self.assertRaises(UnicodeDecodeError, loader.unicode, non_ascii)
 
-        actual = loader.str(non_ascii, encoding='utf-8')
-        self.assertString(actual, 'abcdé')
+        actual = loader.unicode(non_ascii, encoding='utf-8')
+        self.assertString(actual, u'abcdé')
 
     # TODO: check the read() unit tests.
     def test_read(self):
@@ -153,7 +153,7 @@ class LoaderTests(unittest.TestCase, AssertStringMixin, SetupDefaults):
         loader = Loader()
         path = self._get_path('ascii.mustache')
         actual = loader.read(path)
-        self.assertString(actual, 'ascii: abc')
+        self.assertString(actual, u'ascii: abc')
 
     def test_read__file_encoding__attribute(self):
         """
@@ -167,7 +167,7 @@ class LoaderTests(unittest.TestCase, AssertStringMixin, SetupDefaults):
 
         loader.file_encoding = 'utf-8'
         actual = loader.read(path)
-        self.assertString(actual, 'non-ascii: é')
+        self.assertString(actual, u'non-ascii: é')
 
     def test_read__encoding__argument(self):
         """
@@ -180,7 +180,7 @@ class LoaderTests(unittest.TestCase, AssertStringMixin, SetupDefaults):
         self.assertRaises(UnicodeDecodeError, loader.read, path)
 
         actual = loader.read(path, encoding='utf-8')
-        self.assertString(actual, 'non-ascii: é')
+        self.assertString(actual, u'non-ascii: é')
 
     def test_read__to_unicode__attribute(self):
         """

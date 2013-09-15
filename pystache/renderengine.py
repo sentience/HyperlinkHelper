@@ -9,7 +9,6 @@ import re
 
 from pystache.common import is_string
 from pystache.parser import parse
-import collections
 
 
 def context_get(stack, name):
@@ -105,7 +104,7 @@ class RenderEngine(object):
         """
         val = self.resolve_context(context, name)
 
-        if isinstance(val, collections.Callable):
+        if callable(val):
             # Return because _render_value() is already a string.
             return self._render_value(val(), context)
 
@@ -161,7 +160,7 @@ class RenderEngine(object):
         if not is_string(val):
             # In case the template is an integer, for example.
             val = self.to_str(val)
-        if type(val) is not str:
+        if type(val) is not unicode:
             val = self.literal(val)
         return self.render(val, context, delimiters)
 

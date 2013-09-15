@@ -8,4 +8,4 @@ TODO: add a docstring.
 class UnicodeOutput(object):
 
     def name(self):
-        return 'Henri Poincaré'
+        return u'Henri Poincaré'

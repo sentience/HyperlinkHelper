@@ -41,10 +41,10 @@ class ParsedTemplate(object):
         """
         # We avoid use of the ternary operator for Python 2.4 support.
         def get_unicode(node):
-            if type(node) is str:
+            if type(node) is unicode:
                 return node
             return node.render(engine, context)
-        parts = list(map(get_unicode, self._parse_tree))
+        parts = map(get_unicode, self._parse_tree)
         s = ''.join(parts)
 
-        return str(s)
+        return unicode(s)

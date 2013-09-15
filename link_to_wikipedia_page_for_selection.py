@@ -6,17 +6,15 @@ dist_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, dist_dir)
 
 # Python 2/3 compatible
-import chardet
+import chardet, pystache
 
 try:
 	# Python 3 (ST3)
-	import pystache
 	from urllib.request import Request, urlopen
 	from urllib.error import URLError
 	from urllib.parse import urlencode
 except ImportError:
 	# Python 2 (ST2)
-	from python2 import pystache
 	from urllib2 import Request, URLError, urlopen
 	from urllib import urlencode
 
@@ -69,4 +67,5 @@ class LinkToWikipediaPageForSelectionCommand(sublime_plugin.TextCommand):
 				link = self.get_link_with_title(txt)
 				if not link:
 					continue
+				print(self.view.settings().get('hyperlink_helper_link_format'))
 				self.view.replace(edit, s, pystache.render(self.view.settings().get('hyperlink_helper_link_format'), {'url': link[0], 'title?': {'title': link[1]}, 'input': link[2]}))

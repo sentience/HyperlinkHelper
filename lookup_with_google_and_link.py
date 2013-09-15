@@ -6,17 +6,15 @@ dist_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, dist_dir)
 
 # Python 2/3 compatible
-import chardet
+import chardet, pystache
 
 try:
 	# Python 3 (ST3)
-	import pystache
 	from urllib.request import Request, urlopen
 	from urllib.error import URLError
 	from urllib.parse import urlencode
 except ImportError:
 	# Python 2 (ST2)
-	from python2 import pystache
 	from urllib2 import Request, URLError, urlopen
 	from urllib import urlencode
 
