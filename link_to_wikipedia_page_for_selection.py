@@ -1,6 +1,19 @@
 import sublime, sublime_plugin
-import re, urllib, urllib2
-import chardet, pystache
+import re
+
+try:
+	# Python 3 (ST3)
+	from HyperlinkHelper import chardet
+	from HyperlinkHelper import pystache # WHY ISN'T THIS WORKING?!
+	from urllib.request import Request, urlopen
+	from urllib.error import URLError
+	from urllib.parse import urlencode
+except ImportError:
+	# Python 2 (ST2)
+	import chardet
+	from python2 import pystache
+	from urllib2 import Request, URLError, urlopen
+	from urllib import urlencode
 
 def preemptive_imports():
 	""" needed to ensure ability to import these classes later within functions, due to the way ST2 loads plug-in modules """
@@ -11,9 +24,9 @@ class LinkToWikipediaPageForSelectionCommand(sublime_plugin.TextCommand):
 
 	def get_link_with_title(self, phrase):
 		try:
-			url = "http://en.wikipedia.org/wiki/Special:Search?%s" % urllib.urlencode({'search': phrase})
-			req = urllib2.Request(url, headers={'User-Agent' : "Sublime Text 2 Hyperlink Helper"}) 
-			f = urllib2.urlopen(req)
+			url = "http://en.wikipedia.org/wiki/Special:Search?%s" % urlencode({'search': phrase})
+			req = Request(url, headers={'User-Agent' : "Sublime Text 2 Hyperlink Helper"}) 
+			f = urlopen(req)
 			url = f.geturl()
 			content = f.read()
 			decoded_content = content.decode(chardet.detect(content)['encoding'])

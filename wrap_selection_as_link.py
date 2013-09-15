@@ -1,7 +1,17 @@
 import sublime, sublime_plugin
-import re, urllib, urllib2
+import re
 import os, sys
-import chardet, pystache
+
+try:
+	# Python 3 (ST3)
+	from HyperlinkHelper import chardet
+	from HyperlinkHelper import pystache # WHY ISN'T THIS WORKING?!
+	from urllib.request import Request, urlopen
+except ImportError:
+	# Python 2 (ST2)
+	import chardet
+	from python2 import pystache
+	from urllib2 import Request, urlopen
 
 def preemptive_imports():
 	""" needed to ensure ability to import these classes later within functions, due to the way ST2 loads plug-in modules """
@@ -12,8 +22,8 @@ class WrapSelectionAsLinkCommand(sublime_plugin.TextCommand):
 
 	def get_url_title(self, url):
 		try:
-			req = urllib2.Request(url, headers={'User-Agent' : "Sublime Text 2 Hyperlink Helper"}) 
-			f = urllib2.urlopen(req)
+			req = Request(url, headers={'User-Agent' : "Sublime Text 2 Hyperlink Helper"}) 
+			f = urlopen(req)
 			url = f.geturl()
 			content = f.read()
 			decoded_content = content.decode(chardet.detect(content)['encoding'])
