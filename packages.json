@@ -6,10 +6,6 @@
 			"description": "Quickly create hyperlinks from selected text or clipboard contents",
 			"author": "Kevin Yank",
 			"details": "https://github.com/sentience/HyperlinkHelper",
-			"homepage": "https://github.com/sentience/HyperlinkHelper",
-			"readme": "https://github.com/sentience/HyperlinkHelper/master/README.md",
-			"issues": "https://github.com/sentience/HyperlinkHelper/issues",
-			"donate": "https://www.gittip.com/sentience/",
 			"labels": [ "formatting", "text manipulation" ],
 			"releases": [
 				{
@@ -17,14 +13,14 @@
 					"sublime_text": "<3000",
 					"version": "1.4.0",
 					"url": "https://github.com/sentience/HyperlinkHelper/archive/1.4.0.zip",
-					"date": "2013-09-16 0:00:00"
+					"date": "2013-09-16 00:00:00"
 				},
 				{
 					"platforms": "*",
 					"sublime_text": ">=3000",
 					"version": "1.4.0+st3",
 					"url": "https://github.com/sentience/HyperlinkHelper/archive/1.4.0+st3.zip",
-					"date": "2013-09-16 0:00:00"
+					"date": "2013-09-16 00:00:00"
 				}
 			]
 		}
