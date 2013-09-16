@@ -1,20 +1,32 @@
 {
-	"schema_version": "1.2",
+	"schema_version": "2.0",
 	"packages": [
 		{
 			"name": "HyperlinkHelper",
 			"description": "Quickly create hyperlinks from selected text or clipboard contents",
 			"author": "Kevin Yank",
+			"details": "https://github.com/sentience/HyperlinkHelper",
 			"homepage": "https://github.com/sentience/HyperlinkHelper",
-			"last_modified": "2013-01-02 14:50:00",
-			"platforms": {
-				"*": [
-					{
-						"version": "1.3.3",
-						"url": "https://nodeload.github.com/sentience/HyperlinkHelper/zipball/1.3.3"
-					}
-				]
-			}
+			"readme": "https://github.com/sentience/HyperlinkHelper/master/README.md",
+			"issues": "https://github.com/sentience/HyperlinkHelper/issues",
+			"donate": "https://www.gittip.com/sentience/",
+			"labels": [ "formatting", "text manipulation" ],
+			"releases": [
+				{
+					"platforms": "*",
+					"sublime_text": "<3000",
+					"version": "1.4.0",
+					"url": "https://github.com/sentience/HyperlinkHelper/archive/1.4.0.zip",
+					"date": "2013-09-16 0:00:00"
+				},
+				{
+					"platforms": "*",
+					"sublime_text": ">=3000",
+					"version": "1.4.0+st3",
+					"url": "https://github.com/sentience/HyperlinkHelper/archive/1.4.0+st3.zip",
+					"date": "2013-09-16 0:00:00"
+				}
+			]
 		}
 	]
 }
