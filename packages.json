@@ -18,7 +18,7 @@
 				{
 					"platforms": "*",
 					"sublime_text": ">=3000",
-					"version": "1.4.0+st3",
+					"version": "1.4.1+st3",
 					"url": "https://github.com/sentience/HyperlinkHelper/archive/1.4.1+st3.zip",
 					"date": "2014-03-13 00:00:00"
 				}
