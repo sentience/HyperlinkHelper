@@ -40,7 +40,7 @@ class LinkToWikipediaPageForSelectionCommand(sublime_plugin.TextCommand):
 			else:
 				title = title.replace(" - Wikipedia, the free encyclopedia", "")
 			return url, title, phrase
-		except urllib2.URLError as e:
+		except URLError as e:
 			sublime.error_message("Error fetching Wikipedia definition: %s" % str(e))
 			return None
 
