@@ -1,0 +1,3 @@
+Hyperlink Helper upgraded to v1.4.1!
+
+Fixed compatibility with Sublime Text 2.
