@@ -1,0 +1,3 @@
+Hyperlink Helper upgraded to v1.4.2!
+
+Fixed an issue handling failed network connections in ‘Link to Wikipedia Page for Selection’ command.
