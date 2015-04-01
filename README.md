@@ -16,6 +16,7 @@ Currently supported languages:
     * HTML (Rails)
     * HTML5
   * Markdown
+  * MultiMarkdown
   * Textile
   * LaTeX
   * DokuWiki (once Sublime Text 2 has a DokuWiki language file added to it)
