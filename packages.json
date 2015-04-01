@@ -11,16 +11,16 @@
 				{
 					"platforms": "*",
 					"sublime_text": "<3000",
-					"version": "1.4.2",
-					"url": "https://github.com/sentience/HyperlinkHelper/archive/1.4.2.zip",
-					"date": "2014-03-13 09:00:00"
+					"version": "1.4.3",
+					"url": "https://github.com/sentience/HyperlinkHelper/archive/1.4.3.zip",
+					"date": "2015-04-02 10:30:00"
 				},
 				{
 					"platforms": "*",
 					"sublime_text": ">=3000",
-					"version": "1.4.2+st3",
-					"url": "https://github.com/sentience/HyperlinkHelper/archive/1.4.2+st3.zip",
-					"date": "2014-03-13 09:00:00"
+					"version": "1.4.3+st3",
+					"url": "https://github.com/sentience/HyperlinkHelper/archive/1.4.3+st3.zip",
+					"date": "2015-04-02 10:30:00"
 				}
 			]
 		}
