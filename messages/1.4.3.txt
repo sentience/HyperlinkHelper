@@ -1,0 +1,3 @@
+Hyperlink Helper upgraded to v1.4.3!
+
+Added support for MultiMarkdown syntax. (Thanks to Tim Hopper!)
